@@ -33,7 +33,12 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable Long id) {
-        clientService.delete(id);
+        try {
+            clientService.delete(id);
+        }
+        catch (Exception e) {
+            return HttpStatus.NOT_FOUND;
+        }
         return HttpStatus.OK;
     }
 }

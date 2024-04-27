@@ -33,7 +33,32 @@ public class CarOrderController {
 
     @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable Long id) {
+        try {
         carOrderService.delete(id);
+        }
+        catch (Exception e) {
+            return HttpStatus.NOT_FOUND;
+        }
         return HttpStatus.OK;
+    }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<CarOrder>> readByStatus(@PathVariable String status) {
+        return new ResponseEntity<>(carOrderService.readByStatus(status), HttpStatus.OK);
+    }
+
+    @GetMapping("/car/{carId}")
+    public ResponseEntity<List<CarOrder>> readByCarId(@PathVariable Long carId) {
+        return new ResponseEntity<>(carOrderService.readByCarId(carId), HttpStatus.OK);
+    }
+
+    @GetMapping("/employee/{employeeId}")
+    public ResponseEntity<List<CarOrder>> readByEmployeeId(@PathVariable Long employeeId) {
+        return new ResponseEntity<>(carOrderService.readByEmployeeId(employeeId), HttpStatus.OK);
+    }
+
+    @GetMapping("/client/{clientId}")
+    public ResponseEntity<List<CarOrder>> readByClientId(@PathVariable Long clientId) {
+        return new ResponseEntity<>(carOrderService.readByClientId(clientId), HttpStatus.OK);
     }
 }

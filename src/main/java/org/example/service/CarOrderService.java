@@ -37,5 +37,21 @@ public class CarOrderService {
     public void delete(Long id) {
         carOrderRepository.deleteById(id);
     }
+
+    public List<CarOrder> readByStatus(String status) {
+        return carOrderRepository.findByStatus(status);
+    }
+
+    public List<CarOrder> readByCarId(Long Id) {
+        return carOrderRepository.findByCarId(Id);
+    }
+
+    public List<CarOrder> readByEmployeeId(Long Id) {
+        return carOrderRepository.findByEmployeeId(Id);
+    }
+
+    public List<CarOrder> readByClientId(Long Id) {
+        return carOrderRepository.findByClientId(Id);
+    }
 }
 

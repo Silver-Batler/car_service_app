@@ -33,7 +33,12 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable Long id) {
-        employeeService.delete(id);
+        try {
+            employeeService.delete(id);
+        }
+        catch (Exception e) {
+            return HttpStatus.NOT_FOUND;
+        }
         return HttpStatus.OK;
     }
 }

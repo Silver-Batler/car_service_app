@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class Car {
 
     @Id // Первичный ключ
-    @GeneratedValue(strategy = GenerationType.SEQUENCE) // Автоинкремент
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Автоинкремент
     private Long id;
 
     private String brand;
